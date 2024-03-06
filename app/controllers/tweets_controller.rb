@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action
+  before_action :authenticate_user!, except: [:index]
 
   def new
     @tweet = Tweet.new
@@ -14,5 +14,15 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @tweet = Tweet.new(tweet_params)
+    @tweet.user_id = current_user.id
+    @tweer.save
+    redirect_to tweets_path
   end
+
+  private
+    def tweet_params
+      params.require(:tweet).permit(:body)
+    end
+
 end

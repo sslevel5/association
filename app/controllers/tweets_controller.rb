@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def new
-    @tweet = Tweet.new
+    @tweet = Tweet.new # 新規投稿用の空のインスタンス
   end
 
   def index
@@ -11,6 +11,7 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
+    @user = @tweet.user
   end
 
   def create

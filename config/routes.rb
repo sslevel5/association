@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   #==================削除orコメントアウト================
   # get 'favorites/create'
   # get 'favorites/destroy'

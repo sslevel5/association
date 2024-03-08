@@ -6,4 +6,5 @@ class User < ApplicationRecord
          
   has_many :tweets
   has_many :favorites  # 追加
+  has_many :favorite_tweets, through: :favorites, source: :tweet  # 追加
 end
